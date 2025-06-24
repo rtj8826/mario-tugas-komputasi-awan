@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flash Sale Produk</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f7f7f7;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .flash-sale {
+      background: #ffeb3b;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .flash-sale h2 {
+      margin: 0;
+      font-size: 2em;
+    }
+    .product {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .product img {
+      width: 100px;
+      border-radius: 10px;
+    }
+    .product-info {
+      flex: 1;
+      margin-left: 20px;
+      text-align: left;
+    }
+    .price {
+      color: red;
+      font-size: 1.2em;
+    }
+    .countdown {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #d32f2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="flash-sale">
+      <h2>🔥 Flash Sale Hari Ini 🔥</h2>
+      <div class="countdown" id="countdown">00:00:00</div>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/100" alt="Produk 1">
+      <div class="product-info">
+        <h3>Produk A</h3>
+        <p class="price">Rp 99.000</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <img src="https://via.placeholder.com/100" alt="Produk 2">
+      <div class="product-info">
+        <h3>Produk B</h3>
+        <p class="price">Rp 79.000</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Countdown sampai jam 23:59 hari ini
+    const countdownElement = document.getElementById('countdown');
+    function updateCountdown() {
+      const now = new Date();
+      const endOfDay = new Date();
+      endOfDay.setHours(23, 59, 59, 999);
+      const diff = endOfDay - now;
+
+      const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+      const minutes = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+      const seconds = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+      countdownElement.innerText = `${hours}:${minutes}:${seconds}`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
